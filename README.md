@@ -9,11 +9,11 @@
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_ Topdown
+-   Camera Movement: _How does the camera move in your game? (if at all)_ No
+-   Player Health: _How are you handling player health? (healthbar, lives, ?)_ Lives
+-   End Condition: _How does a game/round/level end?_ Infinite
+-   Scoring: _How does the player earn points in your game?_ Killing Enemies
 
 ### Game Description
 
@@ -21,12 +21,10 @@ _A brief explanation of your game. Inculde what is the objective for the player.
 
 ### Controls
 
--   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+-   Movement:
+    -   Left: A
+    -   Right: D
+-   Fire: Space
 
 ## You Additions
 
@@ -34,8 +32,7 @@ _List out what you added to your game to make it different for you_
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+https://grafxkid.itch.io/mini-pixel-pack-3/download/eyJpZCI6MTM1MDA2NSwiZXhwaXJlcyI6MTY5NjI4OTA4NH0%3d.xCI1ooZMRoZRVotxvImZdFdYMQY%3d 
 
 ## Known Issues
 
