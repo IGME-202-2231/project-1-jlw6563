@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     // === Feilds ===
 
     
-    float speed = 20f;
+    float speed = 15f;
 
 
     // Update is called once per frame
