@@ -1,14 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     //Enemy gameobject, timer, list of enemies, bool for is waiting
     [SerializeField]
-    GameObject enemy;
+    List<GameObject> enemyArt;
     float timer = 0;
     List<GameObject> enemies = new List<GameObject>();
     bool isWaiting = false;
@@ -69,12 +66,23 @@ public class EnemySpawner : MonoBehaviour
             enemies[i].transform.position = new Vector3(enemies[i].transform.position.x, newY, enemies[i].transform.position.z);
         }
         //Sets the starting x
-        int x = -10;
+        int x = -8;
         //Loops through 11 times
-        for (int i = 0; i < 11; i++)
+        for (int i = 0; i < 9; i++)
         {
+            int type = Random.Range(0, 2);
             //Creates an enemy at same y and sets the X to int x  and then adds 2 to the x val for the offset
-            enemies.Add(Instantiate(enemy, new Vector3(x, 4, 0), transform.rotation));
+            enemies.Add(Instantiate(enemyArt[type], new Vector3(x, 4, 0), transform.rotation));
+
+            //For player bullet collision sets the enemies i to a certain type
+            if (type == 0)
+            {
+                enemies[i].GetComponent<Enemy>().IsType2 = false;
+            }
+            else
+            {
+                enemies[i].GetComponent<Enemy>().IsType2 = true;
+            }
             x += 2;
         }
     }

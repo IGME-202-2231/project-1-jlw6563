@@ -6,7 +6,8 @@ public class Movement : MonoBehaviour
 {
     // === Feilds ===
 
-    
+    [SerializeField]
+    SpriteVal spriteVal;
     float speed = 15f;
 
 
@@ -25,6 +26,15 @@ public class Movement : MonoBehaviour
         {
             //Increases the position by +1 times the speed to make the ship go left
             transform.position += Vector3.right * speed * Time.deltaTime;
+        }
+
+        if(transform.position.x > 11)
+        {
+            transform.position = new Vector3(8, transform.position.y, 0);
+        }
+        if (transform.position.x < -8)
+        {
+            transform.position = new Vector3(-8, transform.position.y, 0);
         }
     }
 }
