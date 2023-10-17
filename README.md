@@ -12,7 +12,7 @@
 -   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_ Topdown
 -   Camera Movement: _How does the camera move in your game? (if at all)_ No
 -   Player Health: _How are you handling player health? (healthbar, lives, ?)_ Lives
--   End Condition: _How does a game/round/level end?_ Infinite
+-   End Condition: _How does a game/round/level end?_ Infinite, except if enemies get too low
 -   Scoring: _How does the player earn points in your game?_ Killing Enemies
 
 ### Game Description
