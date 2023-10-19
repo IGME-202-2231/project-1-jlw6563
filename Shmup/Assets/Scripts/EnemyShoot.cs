@@ -9,13 +9,14 @@ public class EnemyShoot : MonoBehaviour
     GameObject bullet;
     float timer = 0;
     bool isWaiting = false;
-    [SerializeField]
     GameObject enemyManager;
     EnemySpawner enemySpawnerScript;
 
     private void Start()
     {
-        enemySpawnerScript=GetComponent<EnemySpawner>();
+        enemyManager = GameObject.Find("Enemy Manager");
+        Debug.Log(enemyManager.name);
+        enemySpawnerScript=enemyManager.GetComponent<EnemySpawner>();
     }
 
     // Update is called once per frame
@@ -50,7 +51,7 @@ public class EnemyShoot : MonoBehaviour
                 {
                     Destroy(enemySpawnerScript.Bullets[i]);
                     enemySpawnerScript.Bullets.Remove(enemySpawnerScript.Bullets[i]);
-                    i--;
+                    i++;
                 }
             }
         }

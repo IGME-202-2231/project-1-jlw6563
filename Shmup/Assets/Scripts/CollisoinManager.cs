@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollisoinManager : MonoBehaviour
 {
@@ -13,7 +15,10 @@ public class CollisoinManager : MonoBehaviour
     [SerializeField]
     SpriteVal playerSprite;
 
-    
+    [SerializeField]
+    Text text;
+
+    int score = 0;
 
     
     // Update is called once per frame
@@ -42,6 +47,7 @@ public class CollisoinManager : MonoBehaviour
                         playerShootScript.Bullets.RemoveAt(i);
                         Destroy(tempEn);
                         Destroy(tempBull);
+                        score += 100;
                         
                     }
                 }
@@ -53,7 +59,7 @@ public class CollisoinManager : MonoBehaviour
         for (int i = 0; i < enemySpawnerScript.Bullets.Count; i++)
         {
                 //Makes sure the bullets didn't get deleted and that there aren't 0 bullets
-                if (enemySpawnerScript.Bullets.Count != 0 && enemySpawnerScript.Enemies.Count != 0)
+                if (enemySpawnerScript.Bullets.Count != 0 )
                 {
                     SpriteVal bullet = enemySpawnerScript.Bullets[i].GetComponent<SpriteVal>();
 
@@ -62,14 +68,15 @@ public class CollisoinManager : MonoBehaviour
                     {
                         //Creates 2 temp gameobjects that are both the colliding objects
                         GameObject tempBull = enemySpawnerScript.Bullets[i];
-                        playerShootScript.Bullets.RemoveAt(i);
+                        enemySpawnerScript.Bullets.RemoveAt(i);
                         Destroy(tempBull);
+                        i++;
 
                     }
                 }
          
         }
-
+        text.text = score.ToString();
     }
 
     /// <summary>

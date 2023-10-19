@@ -34,7 +34,7 @@ public class PlayerShooting : MonoBehaviour
             {
                 Destroy(bullets[i]);
                 bullets.Remove(bullets[i]);
-                i--;
+                i++;
             }
         }
     }
