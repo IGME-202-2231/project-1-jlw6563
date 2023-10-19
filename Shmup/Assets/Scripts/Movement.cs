@@ -28,13 +28,13 @@ public class Movement : MonoBehaviour
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
 
-        if(transform.position.x > 11)
+        if(transform.position.x > 10)
         {
-            transform.position = new Vector3(8, transform.position.y, 0);
+            transform.position = new Vector3(10, transform.position.y, 0);
         }
-        if (transform.position.x < -8)
+        if (transform.position.x < -10)
         {
-            transform.position = new Vector3(-8, transform.position.y, 0);
+            transform.position = new Vector3(-10, transform.position.y, 0);
         }
         
     }
