@@ -8,8 +8,8 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     SpriteVal spriteVal;
-    float speed = 15f;
-
+    float speed = 10f;
+    Vector3 tvect = Vector3.up;
 
     // Update is called once per frame
     void Update()
@@ -36,5 +36,6 @@ public class Movement : MonoBehaviour
         {
             transform.position = new Vector3(-8, transform.position.y, 0);
         }
+        
     }
 }

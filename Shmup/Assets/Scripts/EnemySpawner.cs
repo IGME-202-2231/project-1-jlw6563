@@ -10,6 +10,15 @@ public class EnemySpawner : MonoBehaviour
     List<GameObject> enemies = new List<GameObject>();
     bool isWaiting = false;
 
+    List<GameObject> bullets = new List<GameObject>();
+
+    public List<GameObject> Bullets
+    {
+        get { return bullets; }
+        set { bullets = value; }
+    }
+
+
     /// <summary>
     /// Get and set for enemies list
     /// </summary>
@@ -67,7 +76,7 @@ public class EnemySpawner : MonoBehaviour
         }
         //Sets the starting x
         int x = -8;
-        //Loops through 11 times
+        //Loops through 9 times
         for (int i = 0; i < 9; i++)
         {
             int type = Random.Range(0, 2);
@@ -94,6 +103,6 @@ public class EnemySpawner : MonoBehaviour
     {
         //Sets isWaiting to true and timer to 10
         isWaiting= true;
-        timer = 10;
+        timer = 6;
     }
 }

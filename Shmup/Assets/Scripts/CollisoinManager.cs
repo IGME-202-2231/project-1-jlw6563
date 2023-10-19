@@ -47,30 +47,29 @@ public class CollisoinManager : MonoBehaviour
                 }
             }
         }
-        /* player enemyBullet Collision
+        // player enemyBullet Collision
 
-        for (int j = 0; j < enemySpawnerScript.Enemies.Count; j++)
+        //Goes through each bullet in the list
+        for (int i = 0; i < enemySpawnerScript.Bullets.Count; i++)
         {
-            if (enemySpawnerScript.Enemies[j].GetComponent<Enemy>().IsType2 == true)
-            {
-                EnemyShoot enemyShootingScript = enemySpawnerScript.Enemies[j].GetComponent<EnemyShoot>();
-                for (int i = 0; i < enemyShootingScript.Bullets.Count; i++)
+                //Makes sure the bullets didn't get deleted and that there aren't 0 bullets
+                if (enemySpawnerScript.Bullets.Count != 0 && enemySpawnerScript.Enemies.Count != 0)
                 {
-                    if (enemyShootingScript.Bullets.Count != 0)
+                    SpriteVal bullet = enemySpawnerScript.Bullets[i].GetComponent<SpriteVal>();
+
+                    //Checks if those boxes are colliding with each other
+                    if (AABBCheck(bullet, playerSprite))
                     {
-                        SpriteVal enemyBullet = enemyShootingScript.Bullets[i].GetComponent<SpriteVal>();
-                        if (AABBCheck(playerSprite, enemyBullet))
-                        {
-                            //Creates 2 temp gameobjects that are both the colliding objects
-                            GameObject tempBull = enemyShootingScript.Bullets[i];
-                            enemyShootingScript.Bullets.RemoveAt(i);
-                            Destroy(tempBull);
-                        }
+                        //Creates 2 temp gameobjects that are both the colliding objects
+                        GameObject tempBull = enemySpawnerScript.Bullets[i];
+                        playerShootScript.Bullets.RemoveAt(i);
+                        Destroy(tempBull);
+
                     }
                 }
-            }
+         
         }
-        */
+
     }
 
     /// <summary>

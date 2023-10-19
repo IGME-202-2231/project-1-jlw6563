@@ -9,15 +9,14 @@ public class EnemyShoot : MonoBehaviour
     GameObject bullet;
     float timer = 0;
     bool isWaiting = false;
+    [SerializeField]
+    GameObject enemyManager;
+    EnemySpawner enemySpawnerScript;
 
-    List<GameObject> bullets = new List<GameObject>();
-
-    public List<GameObject> Bullets
+    private void Start()
     {
-        get { return bullets; }
-        set { bullets = value; }
+        enemySpawnerScript=GetComponent<EnemySpawner>();
     }
-
 
     // Update is called once per frame
     void Update()
@@ -38,18 +37,21 @@ public class EnemyShoot : MonoBehaviour
             //Is waiting is false
             isWaiting = false;
             //Creates a bullet by instatiating it.
-            bullets.Add(Instantiate(bullet, transform.position, transform.rotation));
+            enemySpawnerScript.Bullets.Add(Instantiate(bullet, transform.position, transform.rotation));
         }
         
 
         //For every bullet if it goes off screen it is removed and the list is counter is subtracted by 1
-        for (int i = 0; i < bullets.Count; i++)
+        for (int i = 0; i < enemySpawnerScript.Bullets.Count; i++)
         {
-            if (bullets[i].transform.position.y < -6)
+            if (enemySpawnerScript.Bullets.Count != 0)
             {
-                Destroy(bullets[i]);
-                bullets.Remove(bullets[i]);
-                i--;
+                if (enemySpawnerScript.Bullets[i].transform.position.y < -6)
+                {
+                    Destroy(enemySpawnerScript.Bullets[i]);
+                    enemySpawnerScript.Bullets.Remove(enemySpawnerScript.Bullets[i]);
+                    i--;
+                }
             }
         }
 
