@@ -75,9 +75,9 @@ public class EnemySpawner : MonoBehaviour
             enemies[i].transform.position = new Vector3(enemies[i].transform.position.x, newY, enemies[i].transform.position.z);
         }
         //Sets the starting x
-        int x = -8;
-        //Loops through 9 times
-        for (int i = 0; i < 9; i++)
+        int x = -6;
+        //Loops through 7 times
+        for (int i = 0; i < 7; i++)
         {
             int type = Random.Range(0, 2);
             //Creates an enemy at same y and sets the X to int x  and then adds 2 to the x val for the offset
@@ -103,6 +103,6 @@ public class EnemySpawner : MonoBehaviour
     {
         //Sets isWaiting to true and timer to 10
         isWaiting= true;
-        timer = 6;
+        timer = 4.7f;
     }
 }

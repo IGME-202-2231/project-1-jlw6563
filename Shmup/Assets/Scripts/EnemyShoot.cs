@@ -15,7 +15,6 @@ public class EnemyShoot : MonoBehaviour
     private void Start()
     {
         enemyManager = GameObject.Find("Enemy Manager");
-        Debug.Log(enemyManager.name);
         enemySpawnerScript=enemyManager.GetComponent<EnemySpawner>();
     }
 

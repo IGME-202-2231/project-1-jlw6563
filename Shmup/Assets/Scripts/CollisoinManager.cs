@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CollisoinManager : MonoBehaviour
 {
+    
+
     [SerializeField]
     PlayerShooting playerShootScript;
 
@@ -18,8 +21,26 @@ public class CollisoinManager : MonoBehaviour
     [SerializeField]
     Text text;
 
+    [SerializeField]
+    GameObject player;
+
+    [SerializeField]
+    GameObject health1;
+    [SerializeField]
+    GameObject health2;
+    [SerializeField]
+    GameObject health3;
+
+    int playerLives = 3;
+    float invinsibilityTimer = 0;
+
     int score = 0;
 
+
+    public int PlayerLives
+    {
+        get { return playerLives; }
+    }
     
     // Update is called once per frame
     void Update()
@@ -43,12 +64,18 @@ public class CollisoinManager : MonoBehaviour
                         //Creates 2 temp gameobjects that are both the colliding objects
                         GameObject tempBull = playerShootScript.Bullets[i];
                         GameObject tempEn = enemySpawnerScript.Enemies[j];
+                        if(tempEn.GetComponent<Enemy>().IsType2 == true)
+                        {
+                            score += 300;
+                        }
+                        else
+                        {
+                            score += 100;
+                        }
                         enemySpawnerScript.Enemies.RemoveAt(j);
                         playerShootScript.Bullets.RemoveAt(i);
                         Destroy(tempEn);
-                        Destroy(tempBull);
-                        score += 100;
-                        
+                        Destroy(tempBull); 
                     }
                 }
             }
@@ -58,25 +85,48 @@ public class CollisoinManager : MonoBehaviour
         //Goes through each bullet in the list
         for (int i = 0; i < enemySpawnerScript.Bullets.Count; i++)
         {
-                //Makes sure the bullets didn't get deleted and that there aren't 0 bullets
-                if (enemySpawnerScript.Bullets.Count != 0 )
+            //Makes sure the bullets didn't get deleted and that there aren't 0 bullets
+            if (enemySpawnerScript.Bullets.Count != 0 )
+            {
+                SpriteVal bullet = enemySpawnerScript.Bullets[i].GetComponent<SpriteVal>();
+
+                //Checks if those boxes are colliding with each other
+                if (AABBCheck(bullet, playerSprite))
                 {
-                    SpriteVal bullet = enemySpawnerScript.Bullets[i].GetComponent<SpriteVal>();
-
-                    //Checks if those boxes are colliding with each other
-                    if (AABBCheck(bullet, playerSprite))
-                    {
-                        //Creates 2 temp gameobjects that are both the colliding objects
-                        GameObject tempBull = enemySpawnerScript.Bullets[i];
-                        enemySpawnerScript.Bullets.RemoveAt(i);
-                        Destroy(tempBull);
-                        i++;
-
-                    }
+                    //Creates 2 temp gameobjects that are both the colliding objects
+                    GameObject tempBull = enemySpawnerScript.Bullets[i];
+                    enemySpawnerScript.Bullets.RemoveAt(i);
+                    Destroy(tempBull);
+                    i++;
+                    playerLives--;
+                    playerInvibile();
                 }
+            }
          
         }
         text.text = score.ToString();
+
+
+        if(invinsibilityTimer < 0 && playerLives > 0)
+        {
+            player.SetActive(true);
+        }
+        else
+        {
+            invinsibilityTimer -= 1 * Time.deltaTime;
+        }
+
+        if(playerLives < 3)
+        {
+            health3.SetActive(false);
+        }
+        if(playerLives < 2) {
+            health2.SetActive(false);
+        }
+        if(playerLives < 1)
+        {
+            health1.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -88,5 +138,12 @@ public class CollisoinManager : MonoBehaviour
     bool AABBCheck(SpriteVal spriteA, SpriteVal spriteB)
     {
         return spriteB.RectMin.x < spriteA.RectMax.x && spriteB.RectMax.x > spriteA.RectMin.x && spriteB.RectMax.y > spriteA.RectMin.y && spriteB.RectMin.y < spriteA.RectMax.y;
+    }
+
+    public void playerInvibile()
+    {
+        player.SetActive(false);
+        invinsibilityTimer = 1.5f;
+
     }
 }

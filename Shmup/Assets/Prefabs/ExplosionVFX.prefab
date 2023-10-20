@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1584795687027728617}
   - component: {fileID: 1921543728145636773}
   - component: {fileID: 4876328633512643732}
+  - component: {fileID: 8793868674665286909}
   m_Layer: 0
   m_Name: ExplosionVFX
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1921543728145636773
 SpriteRenderer:
@@ -103,3 +104,19 @@ MonoBehaviour:
   - {fileID: -1915730289, guid: 70943d3c07392c945999bbef5ed9194d, type: 3}
   - {fileID: -1234249204, guid: 70943d3c07392c945999bbef5ed9194d, type: 3}
   - {fileID: 686188770, guid: 70943d3c07392c945999bbef5ed9194d, type: 3}
+--- !u!111 &8793868674665286909
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433014196036377587}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 5d4c1957eebf31943a93bb3f90c4e8c2, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5d4c1957eebf31943a93bb3f90c4e8c2, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
