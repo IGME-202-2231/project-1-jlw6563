@@ -40,6 +40,13 @@ public class CollisoinManager : MonoBehaviour
     public int PlayerLives
     {
         get { return playerLives; }
+        set { playerLives = value; }
+    }
+    public int Score
+    {
+        get
+        {return score;}
+        set { score = value; }
     }
     
     // Update is called once per frame
@@ -126,6 +133,12 @@ public class CollisoinManager : MonoBehaviour
         if(playerLives < 1)
         {
             health1.SetActive(false);
+        }
+        if(playerLives == 3)
+        {
+            health3.SetActive(true);
+            health2.SetActive(true);
+            health1.SetActive(true);
         }
     }
 

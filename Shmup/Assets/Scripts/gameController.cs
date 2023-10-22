@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class gameController : MonoBehaviour
 {
@@ -26,11 +28,10 @@ public class gameController : MonoBehaviour
     GameObject player;
 
     public GameStates gameState;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    int highScore = 0;
+
+    [SerializeField]
+    Text gameOverText;
 
     // Update is called once per frame
     void Update()
@@ -41,7 +42,29 @@ public class gameController : MonoBehaviour
             enemySpawner.SetActive(false);
             player.SetActive(false);
 
-            
+            if (highScore < collisoinManagerScript.Score)
+            {
+                highScore = collisoinManagerScript.Score;
+            }
+
+            gameOverText.text = "Game Over\nPress 'R' to reset\nHigh Score: " + highScore;
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                gameState = GameStates.play;
+                gameOverUI.SetActive(false);
+                enemySpawner.SetActive(true);
+                player.SetActive(true);
+                collisoinManagerScript.PlayerLives = 3;
+                
+                for(int i = 0; i < enemySpawnerScript.Enemies.Count; i++)
+                {
+                    Destroy(enemySpawnerScript.Enemies[i].gameObject);
+                }
+                enemySpawnerScript.Enemies.Clear();
+                enemySpawnerScript.Spawn();
+                collisoinManagerScript.Score = 0;
+            }
         }
         if(collisoinManagerScript.PlayerLives == 0)
         {
