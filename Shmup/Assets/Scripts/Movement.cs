@@ -6,10 +6,8 @@ public class Movement : MonoBehaviour
 {
     // === Feilds ===
 
-    [SerializeField]
-    SpriteVal spriteVal;
     float speed = 10f;
-    Vector3 tvect = Vector3.up;
+
 
     // Update is called once per frame
     void Update()

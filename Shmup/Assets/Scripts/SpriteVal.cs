@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpriteVal : MonoBehaviour
 {
+    //Holds the size of the box of each sprite.
     Vector2 rectSize;
     
     // Sets the rect size

@@ -8,8 +8,10 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]
     GameObject bullet;
 
+    //List of player bullets
     List<GameObject> bullets = new List<GameObject>();
 
+    //Getter and setter for the bullet list.
     public List<GameObject> Bullets
     {
         get { return bullets; }
@@ -17,7 +19,6 @@ public class PlayerShooting : MonoBehaviour
     }
 
 
-    // Update is called once per frame
     void Update()
     {
         //When the space key is pressed NOT held down

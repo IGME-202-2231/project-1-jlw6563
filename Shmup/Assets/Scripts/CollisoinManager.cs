@@ -36,12 +36,18 @@ public class CollisoinManager : MonoBehaviour
 
     int score = 0;
 
-
+    /// <summary>
+    /// Gets and sets player lives
+    /// </summary>
     public int PlayerLives
     {
         get { return playerLives; }
         set { playerLives = value; }
     }
+
+    /// <summary>
+    /// Gets and sets the score
+    /// </summary>
     public int Score
     {
         get
@@ -71,6 +77,8 @@ public class CollisoinManager : MonoBehaviour
                         //Creates 2 temp gameobjects that are both the colliding objects
                         GameObject tempBull = playerShootScript.Bullets[i];
                         GameObject tempEn = enemySpawnerScript.Enemies[j];
+
+                        //For scoreing gets the enemies type and if its the shooting enemy gives 300 points instead of 100
                         if(tempEn.GetComponent<Enemy>().IsType2 == true)
                         {
                             score += 300;
@@ -89,7 +97,7 @@ public class CollisoinManager : MonoBehaviour
         }
         // player enemyBullet Collision
 
-        //Goes through each bullet in the list
+        //Goes through each enemy bullet in the list
         for (int i = 0; i < enemySpawnerScript.Bullets.Count; i++)
         {
             //Makes sure the bullets didn't get deleted and that there aren't 0 bullets
@@ -100,8 +108,9 @@ public class CollisoinManager : MonoBehaviour
                 //Checks if those boxes are colliding with each other
                 if (AABBCheck(bullet, playerSprite))
                 {
-                    //Creates 2 temp gameobjects that are both the colliding objects
+                    //Creates 1 temp gameobjects that are both the colliding objects
                     GameObject tempBull = enemySpawnerScript.Bullets[i];
+                    //destroys the bullet, removes from list increses count of list, makes player invinsible and deletes a life
                     enemySpawnerScript.Bullets.RemoveAt(i);
                     Destroy(tempBull);
                     i++;
@@ -111,18 +120,20 @@ public class CollisoinManager : MonoBehaviour
             }
          
         }
+        //Updates text score
         text.text = score.ToString();
 
-
+        //If invinsiblity has run out and player lives is greater than 0 set player active
         if(invinsibilityTimer < 0 && playerLives > 0)
         {
             player.SetActive(true);
         }
+        //Otherwise decrease the time
         else
         {
             invinsibilityTimer -= 1 * Time.deltaTime;
         }
-
+        //For setting the images of player lives to active
         if(playerLives < 3)
         {
             health3.SetActive(false);
@@ -134,6 +145,7 @@ public class CollisoinManager : MonoBehaviour
         {
             health1.SetActive(false);
         }
+        //If player health is equal to 3
         if(playerLives == 3)
         {
             health3.SetActive(true);

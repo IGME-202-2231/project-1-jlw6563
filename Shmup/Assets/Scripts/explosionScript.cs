@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class explosionScript : MonoBehaviour
 {
+    //This script does get used wasn't able to figure out explosions sfx might come back un the future.
+    /*
     [SerializeField]
     SpriteRenderer spriteRenderer;
     [SerializeField]
-    List<Sprite> sprites = new List<Sprite>();
     float timer = 1;
-    int index = 0;
 
     // Update is called once per frame
     void Update()
@@ -19,4 +19,5 @@ public class explosionScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    */
 }

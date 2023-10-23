@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     List<GameObject> enemyArt;
     float timer = 0;
+
     List<GameObject> enemies = new List<GameObject>();
     bool isWaiting = false;
 
@@ -83,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
             //Creates an enemy at same y and sets the X to int x  and then adds 2 to the x val for the offset
             enemies.Add(Instantiate(enemyArt[type], new Vector3(x, 4, 0), transform.rotation));
 
-            //For player bullet collision sets the enemies i to a certain type
+            //For Score sets the typpe of the enemy
             if (type == 0)
             {
                 enemies[i].GetComponent<Enemy>().IsType2 = false;

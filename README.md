@@ -1,4 +1,4 @@
-# Project PROJECT_NAME
+# Project Project 1 Shmup
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
 
@@ -9,26 +9,27 @@
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_ Topdown
--   Camera Movement: _How does the camera move in your game? (if at all)_ No
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_ Lives
--   End Condition: _How does a game/round/level end?_ Infinite, except if enemies get too low
--   Scoring: _How does the player earn points in your game?_ Killing Enemies
+-   Camera Orientation: Topdown
+-   Camera Movement:  None
+-   Player Health: Lives
+-   End Condition: Infinite, except if enemies get too low or player runs outta health
+-   Scoring: Killing Enemies
 
 ### Game Description
 
-_A brief explanation of your game. Inculde what is the objective for the player. Think about what would go on the back of a game box._
+In this infintie shoot em up. Fight aliens thru space using your gun shoot enemies so they do not get too close to you while at the same time avoiding enemy fireing.
 
 ### Controls
 
 -   Movement:
-    -   Left: A
-    -   Right: D
+    -Left: A
+    -Right: D
 -   Fire: Space
 
 ## You Additions
 
-Will add either or both a highscore and menus and or proceederaul generation.
+Plan: Will add either or both a highscore and menus and or proceederaul generation.
+Accomplished: I added a highscore feature and a way to reset the game. I didn't quite do proceedural generation but enemy order is randomized 50/50 for each enemy
 
 ## Sources
 
@@ -36,9 +37,9 @@ https://grafxkid.itch.io/mini-pixel-pack-3/download/eyJpZCI6MTM1MDA2NSwiZXhwaXJl
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+For some odd reason gives out of bounds error randomly when shooting. It doesn't break anything and is pretty unexplainable.
 
 ### Requirements not completed
 
-_If you did not complete a project requirement, notate that here_
+Everything was completed.
 
